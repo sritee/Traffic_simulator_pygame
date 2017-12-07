@@ -1,5 +1,7 @@
 #traffic light simualator at Intersection, compatible with OpenAI gym environment type framework.
-light systems
+#declare an instance as env=traffic_simulator(change=0)
+#Starts with green light on the vertical road. change indicates change the state of the traffic lights.
+#The Reward is the total wait time at the intersection.
 
 import pygame
 from pygame.locals import *
@@ -150,7 +152,7 @@ class traffic_simulator:
                                 collision=1
                 if not(self.lights==1 and a.x<((self.display_size/2)-self.road_width/2) and a.x>((self.display_size/2)-self.road_width/2-100) or collision==1):
                     a.move()
-                else
+                else:
                     reward-=0.1
                 if a.x>550:
                     #self.wait_arr.append(a.wait_time)
