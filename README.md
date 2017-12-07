@@ -1,2 +1,2 @@
 # Traffic_simulator_pygame
-Simple pygame traffic simulator
+Pygame traffic simulator for + intersection. Q learning agent with fourier basis for function approximation included.
