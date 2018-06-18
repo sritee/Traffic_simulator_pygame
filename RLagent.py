@@ -2,7 +2,7 @@
 #Q-learning agent with Fourier basis for value function approximation.
 #States include current state of traffic light, time since last traffic light change. Add queue length for adaptive aget.
 import numpy as np
-from traffic_simulator_adv import traffic_simulator
+from a_traffic_simulator import traffic_simulator
 import random
 
 env =traffic_simulator()
@@ -20,7 +20,7 @@ def createalphas(basealpha,fourier_order,observations_dim):  #different alpha fo
     temp=tuple([np.arange(fourier_order+1)]*observations_dim)
     b=np.array(np.meshgrid(*temp)).T.reshape(-1,observations_dim)
     c=np.linalg.norm(b,axis=1)
-    d=basealpha/c
+    d=basealpha/(c+1e-10)
     d[0]=basealpha
     d = np.expand_dims(d, axis=1)
     alphavec=np.tile(d,num_actions)
