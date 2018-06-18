@@ -3,6 +3,11 @@
 #Starts with green light on the vertical road. change indicates change the state of the traffic lights.
 #The Reward is the total wait time at the intersection.
 
+#traffic light simualator at Intersection, compatible with OpenAI gym environment type framework.
+#declare an instance as env=traffic_simulator(change=0)
+#Starts with green light on the vertical road. change indicates change the state of the traffic lights.
+#The Reward is the total wait time at the intersection.
+
 import pygame
 from pygame.locals import *
 import time
@@ -68,15 +73,15 @@ class traffic_simulator:
         self.clock=pygame.time.Clock()
         
         
-        self.background=pygame.image.load('background.jpg')
-        self.car_ver=pygame.image.load('car_v_r.jpg')
-        self.car_hor=pygame.image.load('car_h_r.jpg')
-        self.green_light=pygame.image.load('go_light_r.jpg')
-        self.red_light=pygame.image.load('stop_light_r.jpg')
-        self.road_v=pygame.image.load('road_vertical.jpg')
-        self.road_h=pygame.image.load('road_horizontal.jpg')
-        self.green_light_rot=pygame.image.load('go_light_r.rotated.jpg')
-        self.red_light_rot=pygame.image.load('stop_light_r.rotated.jpg')
+        self.background=pygame.image.load('./images/background.png')
+        self.car_ver=pygame.image.load('./images/car_v_r.jpg')
+        self.car_hor=pygame.image.load('./images/car_h_r.jpg')
+        self.green_light=pygame.image.load('./images/go_light_r.jpg')
+        self.red_light=pygame.image.load('./images/stop_light_r.jpg')
+        self.road_v=pygame.image.load('./images/road_vertical.jpg')
+        self.road_h=pygame.image.load('./images/road_horizontal.jpg')
+        self.green_light_rot=pygame.image.load('./images/go_light_r.rotated.jpg')
+        self.red_light_rot=pygame.image.load('./images/stop_light_r.rotated.jpg')
         self.lights=0
         self.change_time=time.time()
         self.cars_ver=[]
@@ -169,6 +174,5 @@ class traffic_simulator:
         duration=time.time()-self.change_time #duration since the traffic light was last changed.
         
         return [np.array([self.lights,np.clip(duration/10,0,1)]),0.01*reward]
-      
         
 
